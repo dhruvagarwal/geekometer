@@ -1,8 +1,8 @@
 {
-  "name": "geeksforgeeks decorator",
+  "name": "geeksforgeeks tracker",
   "description": "Ease your experience by crossing done questions",
   "version": "0.0.1",
-  "short_name": "Easygeek",
+  "short_name": "g4gtracker",
   
   "permissions": [
     "activeTab",
