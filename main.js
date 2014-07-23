@@ -6,36 +6,17 @@ function crossdone () {
 	else {
 		arr = JSON.parse(arr);
 	}
-	var content = document.getElementsByClassName('page-content')[0];
-	try {
-		var para = content.getElementsByTagName('p');
-		for (var i=0;i<para.length;i++) {
-			a_s = para[i].getElementsByTagName('a');
-			for (var j = 0; j < a_s.length; j++) {
-				for (var k = 0; k < arr.length;k++) {
-					if (arr[k]==a_s[j].href) {
-						var tmp;
-						tmp = a_s[j].innerHTML;
-						a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
-						break;
-					};
-				};
+	var a_s = document.getElementsByTagName('a');
+	for (var j = 0; j < a_s.length; j++) {
+		for (var k = 0; k < arr.length;k++) {
+			if (arr[k]==a_s[j].href) {
+				var tmp;
+				tmp = a_s[j].innerHTML;
+				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
+				break;
 			};
 		};
-	}
-	catch(err) {
-		var a_s = document.getElementsByTagName('a');
-		for (var j = 0; j < a_s.length; j++) {
-			for (var k = 0; k < arr.length;k++) {
-				if (arr[k]==a_s[j].href) {
-					var tmp;
-					tmp = a_s[j].innerHTML;
-					a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
-					break;
-				};
-			};
-		};
-	}
+	};
 }
 
 crossdone();
@@ -52,16 +33,28 @@ xhrObj.onload = reqListener;
 xhrObj.open("GET",url);
 xhrObj.send();
 
+url = chrome.extension.getURL("jquery.js");
+var xhrObj = new XMLHttpRequest();
+xhrObj.onload = reqListener;
+xhrObj.open("GET",url);
+xhrObj.send();
+
+url = chrome.extension.getURL("jquery-ui.js");
+var xhrObj = new XMLHttpRequest();
+xhrObj.onload = reqListener;
+xhrObj.open("GET",url);
+xhrObj.send();
+
 if (typeof localStorage['done'] == 'undefined') {
 	var temp = [];
 	localStorage.setItem('done', JSON.stringify(temp));
 }
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
-	var newDiv = "<div id='easygeek'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true'> Done | <button id='refresh' onclick = 'crossdone()'>Refresh</button></div>";	
+	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true'> Done | <button id='refresh' onclick = 'crossdone()'>Refresh</button></div>";	
 }
 else {
-	var newDiv = "<div id='easygeek'><input type='checkbox' onchange='checkChange()' id='egcheckbox'> Done | <button id='refresh' onclick = 'crossdone()''>Refresh</button></div>";
+	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()'><input type='checkbox' onchange='checkChange()' id='egcheckbox'> Done | <button id='refresh' onclick = 'crossdone()''>Refresh</button></div>";
 }
 
 document.body.innerHTML += newDiv;

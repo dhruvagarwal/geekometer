@@ -1,4 +1,3 @@
-
 function removefromdone(link) {
 	var rem = JSON.parse(localStorage.getItem('done'));
 	var index = rem.indexOf(link);
@@ -40,40 +39,59 @@ function crossdone () {
 	else {
 		arr = JSON.parse(arr);
 	}
-	var content = document.getElementsByClassName('page-content')[0];
-	try {
-		var para = content.getElementsByTagName('p');
-		for (var i=0;i<para.length;i++) {
-			a_s = para[i].getElementsByTagName('a');
-			for (var j = 0; j < a_s.length; j++) {
-				for (var k = 0; k < arr.length;k++) {
-					if (arr[k]==a_s[j].href) {
-						var tmp;
-						tmp = a_s[j].innerHTML;
-						a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
-						break;
-					};
-				};
+	var a_s = document.getElementsByTagName('a');
+	for (var j = 0; j < a_s.length; j++) {
+		for (var k = 0; k < arr.length;k++) {
+			if (arr[k]==a_s[j].href) {
+				var tmp;
+				tmp = a_s[j].innerHTML;
+				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
+				break;
 			};
 		};
-	}
-	catch(err) {
-		var a_s = document.getElementsByTagName('a');
-		for (var j = 0; j < a_s.length; j++) {
-			for (var k = 0; k < arr.length;k++) {
-				if (arr[k]==a_s[j].href) {
-					var tmp;
-					tmp = a_s[j].innerHTML;
-					a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
-					break;
-				};
-			};
-		};
-	}
+	};
 }
 
 function checkChange(){
 	var eg_check = document.getElementById('egcheckbox');
 	if (eg_check.checked) {addtodone(document.URL);console.log('checked');}
 	else {removefromdone(document.URL);console.log('unchecked');}
+}
+
+function initiate() {
+	if (this.title!='done') {
+		this.title = 'done';
+		effects();
+	};
+}
+
+function effects () {
+	$( "#g4g" ).draggable({ 
+		containment: "#wrapper", scroll: false
+	});
+
+	var old=0;
+	var scvalue=0;
+	$(window).scroll(function()	{
+		old=scvalue;
+		scvalue=($(window).scrollTop()); /*returns the vertical scrollbar position for the selected element,When the scrollbar is on the top, the position is 0.*/
+		var mydiv=document.getElementById("g4g");
+		
+		if(scvalue>=320)  //you can change 200 to any other value by measuring scroll value displayed in top left div
+		{
+			//hide div
+			if(old<scvalue)
+			{$("#g4g").fadeOut();}
+			else
+			{$("#g4g").fadeIn();}
+		}
+		
+		else
+		{
+			//show div, pushing div down
+			$("#g4g").fadeIn();
+		}
+
+	});
+
 }

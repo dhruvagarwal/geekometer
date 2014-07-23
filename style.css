@@ -1,4 +1,4 @@
-#easygeek {
+#g4g {
 	padding: 5px 10px;
 	border: 1px solid white;
 	position: fixed;
@@ -10,3 +10,5 @@
 	border-radius: 25px;
 	font-size: 14px;
 }
+
+.draggable {position:fixed; padding: 0.5em; float: left; width: 10em; margin: 0 10px 10px 0; }

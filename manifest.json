@@ -11,13 +11,15 @@
   "content_scripts": [
     {
       "matches": ["*://www.geeksforgeeks.org/*"],
-      "js": ["main.js","headroom.js"],
+      "js": ["main.js"],
       "css":["style.css"],
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    "funcs.js"
+    "funcs.js",
+    "jquery.js",
+    "jquery-ui.js"
   ],
   "manifest_version": 2
 }
