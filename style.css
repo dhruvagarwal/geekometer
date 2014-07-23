@@ -1,0 +1,12 @@
+#easygeek {
+	padding: 5px 10px;
+	border: 1px solid white;
+	position: fixed;
+	top: 0.4em;
+	right: 20em;
+	z-index: 10;
+	background: rgba(0,90,0,.5);
+	color: white;
+	border-radius: 25px;
+	font-size: 14px;
+}

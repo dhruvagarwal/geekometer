@@ -1,0 +1,23 @@
+{
+  "name": "geeksforgeeks decorator",
+  "description": "Ease your experience by crossing done questions",
+  "version": "0.0.1",
+  "short_name": "Easygeek",
+  
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.geeksforgeeks.org/*"],
+      "js": ["main.js","headroom.js"],
+      "css":["style.css"],
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    "funcs.js"
+  ],
+  "manifest_version": 2
+}
