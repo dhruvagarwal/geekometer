@@ -52,6 +52,11 @@ xhrObj.onload = reqListener;
 xhrObj.open("GET",url);
 xhrObj.send();
 
+if (typeof localStorage['done'] == 'undefined') {
+	var temp = [];
+	localStorage.setItem('done', JSON.stringify(temp));
+}
+
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	var newDiv = "<div id='easygeek'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true'> Done | <button id='refresh' onclick = 'crossdone()'>Refresh</button></div>";	
 }
