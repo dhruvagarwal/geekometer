@@ -51,10 +51,10 @@ if (typeof localStorage['done'] == 'undefined') {
 }
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
-	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true'> Done | <button id='refresh' onclick = 'crossdone()'>Refresh</button></div>";	
+	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally screen'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true' >Done|   <button id='refresh' onclick = 'crossdone()'>REFRESH</button></div>";	
 }
 else {
-	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()'><input type='checkbox' onchange='checkChange()' id='egcheckbox'> Done | <button id='refresh' onclick = 'crossdone()''>Refresh</button></div>";
+	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='egcheckbox'  >Done |   <button id='refresh' onclick = 'crossdone()''>REFRESH</button></div>";
 }
 
 document.body.innerHTML += newDiv;

@@ -67,7 +67,14 @@ function initiate() {
 
 function effects () {
 	$( "#g4g" ).draggable({ 
-		containment: "#wrapper", scroll: false
+		containment: "#wrapper", scroll: true, axis: "x",
+		drag: function( event, ui ) {  
+			//$(document).tooltip({ disabled: true });
+		},
+		stop: function( event, ui ) {  
+			//$(document).tooltip({ disabled: false }); 
+		}
+		
 	});
 
 	var old=0;
@@ -93,5 +100,19 @@ function effects () {
 		}
 
 	});
-
+	
+	
+	$(window).resize(function()	{
+		var g4g=document.getElementById("g4g");
+		g4g.style.left="0vh";
+		/*var mtop=$("#g4g").css("margin-top");
+		var mright=$("#g4g").css("margin-right");
+		var t=$("#g4g").css("top");
+		var r=$("#g4g").css("right");
+		alert("margin-top:" +mtop + " , margin-right:" + mright + " ,top:" + t + " , right:" + r);*/
+	});
+	
+	$(function() {
+		$(document).tooltip();
+    });
 }
