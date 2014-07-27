@@ -1,7 +1,7 @@
 {
   "name": "geeksforgeeks tracker",
   "description": "Ease your experience by crossing done questions",
-  "version": "0.0.1",
+  "version": "1.0",
   "short_name": "g4gtracker",
   
   "permissions": [
@@ -21,5 +21,10 @@
     "jquery.js",
     "jquery-ui.js"
   ],
+  "browser_action": {
+      "default_popup": "popup.html",
+      "default_title": "GeeksforGeeks Tracker",
+      "default_icon": "icon.png"
+    },
   "manifest_version": 2
 }
