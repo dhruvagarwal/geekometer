@@ -10,7 +10,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*://www.geeksforgeeks.org/*"],
+      "matches": ["*://geeksquiz.com/*", "*://www.geeksforgeeks.org/*"],
       "js": ["main.js"],
       "css":["style.css"],
       "all_frames": true

@@ -45,7 +45,7 @@ function crossdone () {
 			if (arr[k]==a_s[j].href) {
 				var tmp;
 				tmp = a_s[j].innerHTML;
-				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
+				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #aaa" class="transformed">'+tmp+'</font>';
 				break;
 			};
 		};
