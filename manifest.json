@@ -1,30 +1,24 @@
 {
-  "name": "Geekometer",
-  "description": "Ease your experience by crossing done questions",
-  "version": "1.0",
-  "short_name": "geekometer",
-  
-  "permissions": [
-    "activeTab",
-    "tabs"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["*://geeksquiz.com/*", "*://www.geeksforgeeks.org/*"],
-      "js": ["main.js"],
-      "css":["style.css"],
-      "all_frames": true
-    }
-  ],
-  "web_accessible_resources": [
-    "funcs.js",
-    "jquery.js",
-    "jquery-ui.js"
-  ],
-  "browser_action": {
+   "browser_action": {
+      "default_icon": "icon.png",
       "default_popup": "popup.html",
-      "default_title": "GeeksforGeeks Tracker",
-      "default_icon": "icon.png"
-    },
-  "manifest_version": 2
+      "default_title": "GeeksforGeeks meter"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "style.css" ],
+      "js": [ "main.js" ],
+      "matches": [ "*://geeksquiz.com/*", "*://www.geeksforgeeks.org/*" ]
+   } ],
+   "description": "Ease your experience by crossing done questions",
+   "icons": {
+      "128": "icon_128x128.png",
+      "48": "icon_48x48.png"
+   },
+   "manifest_version": 2,
+   "name": "Geekometer",
+   "permissions": [ "activeTab", "tabs" ],
+   "short_name": "geekometer",
+   "version": "1.0.2",
+   "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" ]
 }
