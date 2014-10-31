@@ -18,7 +18,9 @@ function crossdone () {
 		arr = JSON.parse(arr);
 	}
 	var a_s = document.getElementsByTagName('a');
+
 	for (var j = 0; j < a_s.length; j++) {
+		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
 		for (var k = 0; k < arr.length;k++) {
 			if (arr[k]==a_s[j].href || arr[k]==mappings[a_s[j].href]) {
 				var tmp;
@@ -32,6 +34,7 @@ function crossdone () {
 
 crossdone();
 
+// loading js files
 function reqListener () {
 	var script_eg = document.createElement('script');
 	script_eg.textContent = this.responseText;
@@ -56,10 +59,14 @@ xhrObj.onload = reqListener;
 xhrObj.open("GET",url);
 xhrObj.send();
 
+// js files loaded
+
 if (typeof localStorage['done'] == 'undefined') {
 	var temp = [];
 	localStorage.setItem('done', JSON.stringify(temp));
 }
+
+// adding widget
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally screen'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true' >Done |   <button id='refresh' onclick = 'crossdone()'>REFRESH</button></div>";	
@@ -69,3 +76,5 @@ else {
 }
 
 document.body.innerHTML += newDiv;
+
+// widget added
