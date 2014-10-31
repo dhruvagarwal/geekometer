@@ -36,3 +36,12 @@ body .ui-tooltip {
 #refresh:focus {outline:0;}
 
 #refresh:hover {background-color:rgb(117,76,36);cursor:pointer;}
+
+.done {
+	text-decoration: line-through;
+	color: #8BA870
+}
+
+.important {
+	color: #2B8CB6;
+}

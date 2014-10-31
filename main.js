@@ -66,6 +66,11 @@ if (typeof localStorage['done'] == 'undefined') {
 	localStorage.setItem('done', JSON.stringify(temp));
 }
 
+if (typeof localStorage['important'] == 'undefined') {
+	var temp = [];
+	localStorage.setItem('important', JSON.stringify(temp));
+}
+
 // adding widget
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
