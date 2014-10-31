@@ -17,17 +17,17 @@ function removefromdone(link) {
 }
 
 function addtodone(link) {
-	var arr=localStorage["done"];
-	if (typeof arr == 'undefined') {
-		arr = [link];
+	var doneArray=localStorage["done"];
+	if (typeof doneArray == 'undefined') {
+		doneArray = [link];
 	}
 	else {
-		arr = JSON.parse(localStorage.getItem('done'));
-		if (arr.indexOf(link) == -1){
-			arr.push(link);
+		doneArray = JSON.parse(localStorage.getItem('done'));
+		if (doneArray.indexOf(link) == -1){
+			doneArray.push(link);
 		}
 	}
-	localStorage.setItem('done', JSON.stringify(arr));
+	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
 function removefromimp(link) {
@@ -38,50 +38,17 @@ function removefromimp(link) {
 }
 
 function addtoimp(link) {
-	var arr=localStorage["important"];
-	if (typeof arr == 'undefined') {
-		arr = [link];
+	var importantArray=localStorage["important"];
+	if (typeof importantArray == 'undefined') {
+		importantArray = [link];
 	}
 	else {
-		arr = JSON.parse(localStorage.getItem('important'));
-		if (arr.indexOf(link) == -1){
-			arr.push(link);
+		importantArray = JSON.parse(localStorage.getItem('important'));
+		if (importantArray.indexOf(link) == -1){
+			importantArray.push(link);
 		}
 	}
-	localStorage.setItem('important', JSON.stringify(arr));
-}
-
-function crossdone () {
-	//nullify existing crosses
-	var crosses = document.getElementsByClassName('transformed');
-	while (crosses.length > 0) {
-		for (var i = 0; i < crosses.length; i++) {
-			var tmp = crosses[i].innerHTML;
-			crosses[i].parentNode.innerHTML = tmp;
-		};
-		crosses = document.getElementsByClassName('transformed');
-	}
-	//crosses nullified
-	//not sure about reasoning of above method
-
-	var arr = localStorage["done"];
-	if (typeof arr == 'undefined') {
-		arr = [];
-	}
-	else {
-		arr = JSON.parse(arr);
-	}
-	var a_s = document.getElementsByTagName('a');
-	for (var j = 0; j < a_s.length; j++) {
-		for (var k = 0; k < arr.length;k++) {
-			if (arr[k] == a_s[j].href || arr[k]==mappings[a_s[j].href]) {
-				var tmp;
-				tmp = a_s[j].innerHTML;
-				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
-				break;
-			};
-		};
-	};
+	localStorage.setItem('important', JSON.stringify(importantArray));
 }
 
 // function to nullify all addons on links
@@ -119,6 +86,8 @@ function refreshChange() {
 		for (var k = 0; k < doneArray.length;k++) {
 			if (doneArray[k] == a_s[j].href || doneArray[k]==mappings[a_s[j].href]) {
 				a_s[j].setAttribute("class","done "+a_s[j].className);
+				a_s[j].style.color = "#8BA870";
+				a_s[j].style.textDecoration = "line-through";
 				break;
 			};
 		};
@@ -127,6 +96,7 @@ function refreshChange() {
 		for (var k = 0; k < importantArray.length;k++) {
 			if (importantArray[k] == a_s[j].href || importantArray[k]==mappings[a_s[j].href]) {
 				a_s[j].setAttribute("class","important "+a_s[j].className);
+				a_s[j].style.color = "#2B8CB6";
 				break;
 			};
 		};
@@ -135,16 +105,24 @@ function refreshChange() {
 }
 
 function checkChange(){
-	var eg_check = document.getElementById('egcheckbox');
-	if (eg_check.checked) {addtodone(document.URL);console.log('checked');}
-	else {removefromdone(document.URL);console.log('unchecked');}
+	var eg_check = document.getElementById('donecheckbox');
+	if (eg_check.checked) {
+		addtodone(document.URL);console.log('checked');
+	}
+	else {
+		removefromdone(document.URL);console.log('unchecked');
+	}
 }
 
 // writing this method
 function checkChangeImp(){
 	var eg_check = document.getElementById('impcheckbox');
-	if (eg_check.checked) {addtoimp(document.URL);console.log('checked');}
-	else {removefromimp(document.URL);console.log('unchecked');}
+	if (eg_check.checked) {
+		addtoimp(document.URL);console.log('checked');
+	}
+	else {
+		removefromimp(document.URL);console.log('unchecked');
+	}
 }
 
 function initiate() {

@@ -9,30 +9,61 @@ var mappings = {
     "http://www.geeksforgeeks.org/archives/8405": "http://www.geeksforgeeks.org/next-greater-element/"
 };
 
-function crossdone () {
-	var arr = localStorage["done"];
-	if (typeof arr == 'undefined') {
-		arr = [];
+// function to nullify all addons on links
+function nullify() {
+	var a_s = document.getElementsByTagName("a");
+	for (var i = 0; i < a_s.length; i++) {
+		a_s[i].setAttribute("class","");
+	};
+}
+
+function refreshChange() {
+	nullify();
+	a_s = document.getElementsByTagName("a");
+	// for done
+	var doneArray = localStorage["done"];
+	if (typeof doneArray == 'undefined') {
+		doneArray = [];
 	}
 	else {
-		arr = JSON.parse(arr);
+		doneArray = JSON.parse(doneArray);
 	}
-	var a_s = document.getElementsByTagName('a');
+
+	// for important
+	var importantArray = localStorage["important"];
+	if (typeof importantArray == 'undefined') {
+		importantArray = [];
+	}
+	else {
+		importantArray = JSON.parse(importantArray);
+	}
 
 	for (var j = 0; j < a_s.length; j++) {
 		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
-		for (var k = 0; k < arr.length;k++) {
-			if (arr[k]==a_s[j].href || arr[k]==mappings[a_s[j].href]) {
-				var tmp;
-				tmp = a_s[j].innerHTML;
-				a_s[j].innerHTML = '<font style="text-decoration:line-through;color: #8BA870" class="transformed">'+tmp+'</font>';
+
+		// for done
+		for (var k = 0; k < doneArray.length;k++) {
+			if (doneArray[k] == a_s[j].href || doneArray[k]==mappings[a_s[j].href]) {
+				a_s[j].setAttribute("class","done "+a_s[j].className);
+				a_s[j].style.color = "#8BA870";
+				a_s[j].style.textDecoration = "line-through";
+				break;
+			};
+		};
+
+		// for important
+		for (var k = 0; k < importantArray.length;k++) {
+			if (importantArray[k] == a_s[j].href || importantArray[k]==mappings[a_s[j].href]) {
+				a_s[j].setAttribute("class","important "+a_s[j].className);
+				a_s[j].style.color = "#2B8CB6";
 				break;
 			};
 		};
 	};
+
 }
 
-crossdone();
+refreshChange();
 
 // loading js files
 function reqListener () {
@@ -71,15 +102,29 @@ if (typeof localStorage['important'] == 'undefined') {
 	localStorage.setItem('important', JSON.stringify(temp));
 }
 
-// adding widget
+// adding widget/tooltip
+
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
+document.body.innerHTML += newDiv;
+
+// console.log('ahashashashjhjsadhjashjd');
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
-	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally screen'><input type='checkbox' onchange='checkChange()' id='egcheckbox' checked='true' >Done |   <button id='refresh' onclick = 'crossdone()'>REFRESH</button></div>";	
-}
-else {
-	var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='egcheckbox'  >Done |   <button id='refresh' onclick = 'crossdone()'>REFRESH</button></div>";
+	donebox = document.getElementsByTagName('input');
+	for (var i = 0; i < donebox.length; i++) {
+		if (donebox[i].id === "donecheckbox") {
+			donebox[i].setAttribute("checked","true");
+		}
+	};
 }
 
-document.body.innerHTML += newDiv;
+if (JSON.parse(localStorage.getItem('important')).indexOf(document.URL)!=-1) {
+	impbox = document.getElementsByTagName('input');
+	for (var i = 0; i < impbox.length; i++) {
+		if (impbox[i].id === "impcheckbox") {
+			impbox[i].setAttribute("checked","true");
+		}
+	};	
+}
 
 // widget added

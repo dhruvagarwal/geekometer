@@ -1,20 +1,28 @@
 #g4g {
 	padding: 5px 10px;
-	
 	position: fixed;
-    top:3vh; right:70vh;
+    top:3vh; right:50vh;
 	z-index: 10;	
 	color: white;
 	border-radius: 25px;
 	font-size: 14px;
 	cursor: move;
-	width:10em;
+	width:15.5em;
     font-family:corbel;
-	border-style:solid; border-color:rgb(60,35,12); border-width:0px 5px 5px 0px;
+	border-style:solid;
+	border-color:rgb(60,35,12);
+	border-width:0px 5px 5px 0px;
 	background-color:rgb(155,102,11); 	
 }
 
-.draggable {position:fixed; padding: 0.5em; padding-right:0; float: left; width: 10em; margin: 0 10px 10px 0;}
+.draggable {
+	position:fixed;
+	padding: 0.5em;
+	padding-right:0;
+	float: left;
+	width: 10em;
+	margin: 0 10px 10px 0;
+}
 
 
 .ui-tooltip {
@@ -29,13 +37,29 @@ body .ui-tooltip {
 	border-width: 2px;
 }
 
-#refresh {background-color:rgb(96,57,19); color:white; border-radius:15px; height:23px; font-size:12px; font-family:corbel;
-          width:73px;
-         border-width:0px; left:3px; position:relative; border-style:solid; border-color:black;}
+#refresh {
+	background-color:rgb(96,57,19);
+	color:white;
+	border-radius:15px;
+	height:23px;
+	font-size:12px;
+	font-family:corbel;
+    width:73px;
+    border-width:0px;
+    left:3px;
+    position:relative;
+    border-style:solid;
+    border-color:black;
+}
 		 
-#refresh:focus {outline:0;}
+#refresh:focus {
+	outline:0;
+}
 
-#refresh:hover {background-color:rgb(117,76,36);cursor:pointer;}
+#refresh:hover {
+	background-color:rgb(117,76,36);
+	cursor:pointer;
+}
 
 .done {
 	text-decoration: line-through;
