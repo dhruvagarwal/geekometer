@@ -56,6 +56,7 @@ function nullify() {
 	var a_s = document.getElementsByTagName("a");
 	for (var i = 0; i < a_s.length; i++) {
 		a_s[i].setAttribute("class","");
+		a_s[i].setAttribute("style","");
 	};
 }
 

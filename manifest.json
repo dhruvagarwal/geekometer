@@ -19,6 +19,6 @@
    "name": "Geekometer",
    "permissions": [ "activeTab", "tabs" ],
    "short_name": "geekometer",
-   "version": "1.0.3",
+   "version": "1.1",
    "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" ]
 }

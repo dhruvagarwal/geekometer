@@ -61,6 +61,13 @@ function refreshChange() {
 		};
 	};
 
+	// for separating a tags --temporary
+	content = document.getElementById('content')
+	a_s = content.getElementsByTagName('a')
+	for(i=0;i<a_s.length;i++)
+	{
+		a_s[i].innerHTML +='<br/>'; 
+	}
 }
 
 refreshChange();
@@ -104,7 +111,7 @@ if (typeof localStorage['important'] == 'undefined') {
 
 // adding widget/tooltip
 
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important <!--input type='color' value='#2B8CB6' style='width:25px;padding:0;border:none;background:none;'--> |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
 // console.log('ahashashashjhjsadhjashjd');
