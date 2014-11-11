@@ -51,6 +51,28 @@ function addtoimp(link) {
 	localStorage.setItem('important', JSON.stringify(importantArray));
 }
 
+function removefromcode(link) {
+	var rem = JSON.parse(localStorage.getItem('code'));
+	var index = rem.indexOf(link);
+	rem.splice(index,1);
+	localStorage.setItem('code', JSON.stringify(rem));
+}
+
+function addtocode(link) {
+	var codeArray=localStorage["code"];
+	if (typeof codeArray == 'undefined') {
+		codeArray = [link];
+	}
+	else {
+		codeArray = JSON.parse(localStorage.getItem('code'));
+		if (codeArray.indexOf(link) == -1){
+			codeArray.push(link);
+		}
+	}
+	localStorage.setItem('code', JSON.stringify(codeArray));
+}
+
+
 // function to nullify all addons on links
 function nullify() {
 	var a_s = document.getElementsByTagName("a");
@@ -82,6 +104,15 @@ function refreshChange() {
 		importantArray = JSON.parse(importantArray);
 	}
 
+	// for code
+	var codeArray = localStorage["code"];
+	if (typeof codeArray == 'undefined') {
+		codeArray = [];
+	}
+	else {
+		codeArray = JSON.parse(codeArray);
+	}
+
 	for (var j = 0; j < a_s.length; j++) {
 		// for done
 		for (var k = 0; k < doneArray.length;k++) {
@@ -101,6 +132,17 @@ function refreshChange() {
 				break;
 			};
 		};
+
+		// for code
+		for (var k = 0; k < codeArray.length;k++) {
+			if (codeArray[k] == a_s[j].href || codeArray[k]==mappings[a_s[j].href]) {
+				a_s[j].setAttribute("class","done "+a_s[j].className);
+				a_s[j].style.color = "#EA3C3C";
+				// a_s[j].style.textDecoration = "line-through";
+				break;
+			};
+		};
+
 	};
 
 }
@@ -125,6 +167,17 @@ function checkChangeImp(){
 		removefromimp(document.URL);console.log('unchecked');
 	}
 }
+
+function checkChangeCode(){
+	var eg_check = document.getElementById('codecheckbox');
+	if (eg_check.checked) {
+		addtocode(document.URL);console.log('checked');
+	}
+	else {
+		removefromcode(document.URL);console.log('unchecked');
+	}
+}
+
 
 function initiate() {
 	if (this.title!='done') {

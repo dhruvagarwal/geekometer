@@ -38,6 +38,15 @@ function refreshChange() {
 		importantArray = JSON.parse(importantArray);
 	}
 
+	// for code
+	var codeArray = localStorage["code"];
+	if (typeof codeArray == 'undefined') {
+		codeArray = [];
+	}
+	else {
+		codeArray = JSON.parse(codeArray);
+	}
+
 	for (var j = 0; j < a_s.length; j++) {
 		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
 
@@ -56,6 +65,16 @@ function refreshChange() {
 			if (importantArray[k] == a_s[j].href || importantArray[k]==mappings[a_s[j].href]) {
 				a_s[j].setAttribute("class","important "+a_s[j].className);
 				a_s[j].style.color = "#2B8CB6";
+				break;
+			};
+		};
+
+		// for code
+		for (var k = 0; k < codeArray.length;k++) {
+			if (codeArray[k] == a_s[j].href || codeArray[k]==mappings[a_s[j].href]) {
+				a_s[j].setAttribute("class","done "+a_s[j].className);
+				a_s[j].style.color = "#EA3C3C";
+				// a_s[j].style.textDecoration = "line-through";
 				break;
 			};
 		};
@@ -111,7 +130,7 @@ if (typeof localStorage['important'] == 'undefined') {
 
 // adding widget/tooltip
 
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important <!--input type='color' value='#2B8CB6' style='width:25px;padding:0;border:none;background:none;'--> |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important <!--input type='color' value='#2B8CB6' style='width:25px;padding:0;border:none;background:none;'--> | <input type='checkbox' onchange='checkChangeCode()' id='codecheckbox'> Code |  <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
 // console.log('ahashashashjhjsadhjashjd');
@@ -129,6 +148,15 @@ if (JSON.parse(localStorage.getItem('important')).indexOf(document.URL)!=-1) {
 	impbox = document.getElementsByTagName('input');
 	for (var i = 0; i < impbox.length; i++) {
 		if (impbox[i].id === "impcheckbox") {
+			impbox[i].setAttribute("checked","true");
+		}
+	};	
+}
+
+if (JSON.parse(localStorage.getItem('code')).indexOf(document.URL)!=-1) {
+	impbox = document.getElementsByTagName('input');
+	for (var i = 0; i < impbox.length; i++) {
+		if (impbox[i].id === "codecheckbox") {
 			impbox[i].setAttribute("checked","true");
 		}
 	};	
