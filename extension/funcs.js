@@ -30,25 +30,43 @@ function addtodone(link) {
 	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
+// TODO: check this method
 function removefromimp(link) {
 	var rem = JSON.parse(localStorage.getItem('important'));
-	var index = rem.indexOf(link);
+	var impLinks = [];
+	for (i = 0; i < importantArray.length; i++)
+		impLinks.push(importantArray[i][0]);
+	var index = impLinks.indexOf(link);
 	rem.splice(index,1);
 	localStorage.setItem('important', JSON.stringify(rem));
 }
 
+// TODO: check this method
 function addtoimp(link) {
+	var color = localStorage['color'];
+	if (typeof color == 'undefined') {
+		color = "#2B8CB6";
+		localStorage.setItem('color',color);
+	}
+
 	var importantArray=localStorage["important"];
 	if (typeof importantArray == 'undefined') {
-		importantArray = [link];
+		importantArray = [[link,color]];
 	}
 	else {
 		importantArray = JSON.parse(localStorage.getItem('important'));
-		if (importantArray.indexOf(link) == -1){
-			importantArray.push(link);
+		var impLinks = [];
+		for (i = 0; i < importantArray.length; i++)
+			impLinks.push(importantArray[i][0]);
+		if (impLinks.indexOf(link) == -1){
+			importantArray.push([link,color]);
 		}
 	}
 	localStorage.setItem('important', JSON.stringify(importantArray));
+}
+
+function changecolor(color) {
+	localStorage.setItem('color',color);
 }
 
 // function to nullify all addons on links
@@ -65,6 +83,11 @@ function refreshChange() {
 	nullify();
 	a_s = document.getElementsByTagName("a");
 
+	var color = localStorage["color"];
+	if (typeof color == 'undefined') {
+		color = "#2B8CB6";
+	}
+	
 	// for done
 	var doneArray = localStorage["done"];
 	if (typeof doneArray == 'undefined') {
@@ -81,9 +104,18 @@ function refreshChange() {
 	}
 	else {
 		importantArray = JSON.parse(importantArray);
+		for (i = 0; i < importantArray.length; i++) {
+			if (importantArray[i][1] == undefined)
+			{
+				importantArray[i] = [importantArray[i],color];
+			}
+		}
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
+		//TODO: make this optional
+		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
+
 		// for done
 		for (var k = 0; k < doneArray.length;k++) {
 			if (doneArray[k] == a_s[j].href || doneArray[k]==mappings[a_s[j].href]) {
@@ -96,9 +128,9 @@ function refreshChange() {
 
 		// for important
 		for (var k = 0; k < importantArray.length;k++) {
-			if (importantArray[k] == a_s[j].href || importantArray[k]==mappings[a_s[j].href]) {
+			if (importantArray[k][0] == a_s[j].href || importantArray[k][0]==mappings[a_s[j].href]) {
 				a_s[j].setAttribute("class","important "+a_s[j].className);
-				a_s[j].style.color = "#2B8CB6";
+				a_s[j].style.color = importantArray[k][1];
 				break;
 			};
 		};
@@ -116,7 +148,6 @@ function checkChange(){
 	}
 }
 
-// writing this method
 function checkChangeImp(){
 	var eg_check = document.getElementById('impcheckbox');
 	if (eg_check.checked) {
@@ -127,6 +158,7 @@ function checkChangeImp(){
 	}
 }
 
+// TODO: test what the hell it does
 function initiate() {
 	if (this.title!='done') {
 		this.title = 'done';

@@ -1,12 +1,12 @@
 // hack to save redirected links
 var mappings = {
-    "http://www.geeksforgeeks.org/archives/11042": "http://www.geeksforgeeks.org/applications-of-queue-data-structure/", 
-    "http://www.geeksforgeeks.org/archives/18754": "http://www.geeksforgeeks.org/implement-two-stacks-in-an-array/", 
-    "http://www.geeksforgeeks.org/archives/6547": "http://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/", 
-    "http://www.geeksforgeeks.org/archives/23449": "http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/", 
-    "http://www.geeksforgeeks.org/archives/6921": "http://www.geeksforgeeks.org/reverse-a-stack-using-recursion/", 
-    "http://www.geeksforgeeks.org/archives/5009": "http://www.geeksforgeeks.org/queue-using-stacks/", 
-    "http://www.geeksforgeeks.org/archives/8405": "http://www.geeksforgeeks.org/next-greater-element/"
+	"http://www.geeksforgeeks.org/archives/11042": "http://www.geeksforgeeks.org/applications-of-queue-data-structure/", 
+	"http://www.geeksforgeeks.org/archives/18754": "http://www.geeksforgeeks.org/implement-two-stacks-in-an-array/", 
+	"http://www.geeksforgeeks.org/archives/6547": "http://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/", 
+	"http://www.geeksforgeeks.org/archives/23449": "http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/", 
+	"http://www.geeksforgeeks.org/archives/6921": "http://www.geeksforgeeks.org/reverse-a-stack-using-recursion/", 
+	"http://www.geeksforgeeks.org/archives/5009": "http://www.geeksforgeeks.org/queue-using-stacks/", 
+	"http://www.geeksforgeeks.org/archives/8405": "http://www.geeksforgeeks.org/next-greater-element/"
 };
 
 // function to nullify all addons on links
@@ -20,6 +20,12 @@ function nullify() {
 function refreshChange() {
 	nullify();
 	a_s = document.getElementsByTagName("a");
+
+	var color = localStorage["color"];
+	if (typeof color == 'undefined') {
+		color = "#2B8CB6";
+	}
+	
 	// for done
 	var doneArray = localStorage["done"];
 	if (typeof doneArray == 'undefined') {
@@ -36,6 +42,12 @@ function refreshChange() {
 	}
 	else {
 		importantArray = JSON.parse(importantArray);
+		for (i = 0; i < importantArray.length; i++) {
+			if (importantArray[i][1] == undefined)
+			{
+				importantArray[i] = [importantArray[i],color];
+			}
+		}
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
@@ -53,9 +65,9 @@ function refreshChange() {
 
 		// for important
 		for (var k = 0; k < importantArray.length;k++) {
-			if (importantArray[k] == a_s[j].href || importantArray[k]==mappings[a_s[j].href]) {
+			if (importantArray[k][0] == a_s[j].href || importantArray[k][0]==mappings[a_s[j].href]) {
 				a_s[j].setAttribute("class","important "+a_s[j].className);
-				a_s[j].style.color = "#2B8CB6";
+				a_s[j].style.color = importantArray[k][1];
 				break;
 			};
 		};
@@ -102,6 +114,10 @@ if (typeof localStorage['important'] == 'undefined') {
 	localStorage.setItem('important', JSON.stringify(temp));
 }
 
+if (typeof localStorage['color'] == 'undefined') {
+	var temp = '#2B8CB6';
+	localStorage.setItem('color', temp);
+}
 // adding widget/tooltip
 
 var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
@@ -118,6 +134,7 @@ if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	};
 }
 
+// TODO: rewrite this method to support new structure
 if (JSON.parse(localStorage.getItem('important')).indexOf(document.URL)!=-1) {
 	impbox = document.getElementsByTagName('input');
 	for (var i = 0; i < impbox.length; i++) {
