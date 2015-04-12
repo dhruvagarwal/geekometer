@@ -36,21 +36,27 @@ function refreshChange() {
 	}
 
 	// for important
+	console.log('color is '+color);
 	var importantArray = localStorage["important"];
 	if (typeof importantArray == 'undefined') {
 		importantArray = [];
 	}
 	else {
 		importantArray = JSON.parse(importantArray);
+		var newImp = [];
 		for (i = 0; i < importantArray.length; i++) {
-			if (importantArray[i][1] == undefined)
-			{
-				importantArray[i] = [importantArray[i],color];
+			if (typeof importantArray[i] == 'string') {
+				newImp.push([importantArray[i],color]);
 			}
+			else
+				newImp.push(importantArray[i]);
 		}
+		localStorage.setItem("important",JSON.stringify(newImp));
+		importantArray = newImp;// copy the new array to previous
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
+		// TODO: make this optional
 		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
 
 		// for done
@@ -134,8 +140,13 @@ if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	};
 }
 
-// TODO: rewrite this method to support new structure
-if (JSON.parse(localStorage.getItem('important')).indexOf(document.URL)!=-1) {
+// TODO: test if it works fine 
+var imp = JSON.parse(localStorage.getItem('important')),impLinks = [];
+for (i = 0; i < imp.length; i++) {
+	impLinks.push(imp[i][0]);
+}
+
+if (impLinks.indexOf(document.URL)!=-1) {
 	impbox = document.getElementsByTagName('input');
 	for (var i = 0; i < impbox.length; i++) {
 		if (impbox[i].id === "impcheckbox") {

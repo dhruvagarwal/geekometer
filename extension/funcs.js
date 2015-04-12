@@ -32,13 +32,13 @@ function addtodone(link) {
 
 // TODO: check this method
 function removefromimp(link) {
-	var rem = JSON.parse(localStorage.getItem('important'));
+	var importantArray = JSON.parse(localStorage.getItem('important'));
 	var impLinks = [];
 	for (i = 0; i < importantArray.length; i++)
 		impLinks.push(importantArray[i][0]);
 	var index = impLinks.indexOf(link);
-	rem.splice(index,1);
-	localStorage.setItem('important', JSON.stringify(rem));
+	importantArray.splice(index,1);
+	localStorage.setItem('important', JSON.stringify(importantArray));
 }
 
 // TODO: check this method
@@ -104,12 +104,16 @@ function refreshChange() {
 	}
 	else {
 		importantArray = JSON.parse(importantArray);
+		var newImp = [];
 		for (i = 0; i < importantArray.length; i++) {
-			if (importantArray[i][1] == undefined)
-			{
-				importantArray[i] = [importantArray[i],color];
+			if (typeof importantArray[i] == 'string') {
+				newImp.push([importantArray[i],color]);
 			}
+			else
+				newImp.push(importantArray[i]);
 		}
+		localStorage.setItem("important",JSON.stringify(newImp));
+		importantArray = newImp;
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
