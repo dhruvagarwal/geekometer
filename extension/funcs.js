@@ -30,7 +30,6 @@ function addtodone(link) {
 	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
-// TODO: check this method
 function removefromimp(link) {
 	var importantArray = JSON.parse(localStorage.getItem('important'));
 	var impLinks = [];
@@ -41,7 +40,6 @@ function removefromimp(link) {
 	localStorage.setItem('important', JSON.stringify(importantArray));
 }
 
-// TODO: check this method
 function addtoimp(link) {
 	var color = localStorage['color'];
 	if (typeof color == 'undefined') {
@@ -117,8 +115,6 @@ function refreshChange() {
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
-		//TODO: make this optional
-		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
 
 		// for done
 		for (var k = 0; k < doneArray.length;k++) {

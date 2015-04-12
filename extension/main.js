@@ -140,7 +140,7 @@ if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	};
 }
 
-// TODO: test if it works fine 
+// to mark imp. checkbox true
 var imp = JSON.parse(localStorage.getItem('important')),impLinks = [];
 for (i = 0; i < imp.length; i++) {
 	impLinks.push(imp[i][0]);
