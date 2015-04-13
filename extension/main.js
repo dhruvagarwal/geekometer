@@ -83,33 +83,25 @@ function refreshChange() {
 
 refreshChange();
 
-// loading js files
-function reqListener () {
-	var script_eg = document.createElement('script');
-	script_eg.textContent = this.responseText;
-	(document.head||document.documentElement).appendChild(script_eg);
+var scriptInjection = function(scripts) {
+	this.toLoad = scripts.length;
+	this.loaded = 0;
+
+	var $this = this;
+	for(i = 0; i < this.toLoad; i++) {
+		var xhrObj = new XMLHttpRequest();
+		xhrObj.onload = function() {
+			var script_eg = document.createElement('script');
+			script_eg.textContent = this.responseText;
+			(document.head||document.documentElement).appendChild(script_eg);
+			$this.loaded++;
+		};
+		xhrObj.open("GET",chrome.extension.getURL(scripts[i]));
+		xhrObj.send();
+	}
 }
 
-var url = chrome.extension.getURL("funcs.js");
-var xhrObj = new XMLHttpRequest();
-xhrObj.onload = reqListener;
-xhrObj.open("GET",url);
-xhrObj.send();
-
-url = chrome.extension.getURL("jquery.js");
-var xhrObj = new XMLHttpRequest();
-xhrObj.onload = reqListener;
-xhrObj.open("GET",url);
-xhrObj.send();
-
-url = chrome.extension.getURL("jquery-ui.js");
-var xhrObj = new XMLHttpRequest();
-xhrObj.onload = reqListener;
-xhrObj.open("GET",url);
-xhrObj.send();
-
 // js files loaded
-
 if (typeof localStorage['done'] == 'undefined') {
 	var temp = [];
 	localStorage.setItem('done', JSON.stringify(temp));
@@ -126,7 +118,7 @@ if (typeof localStorage['color'] == 'undefined') {
 }
 // adding widget/tooltip
 
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' onmouseover='initiate()' title='Drag and Drop horizontally on screen'><input type='checkbox' onchange='checkChange()' id='donecheckbox'>Done |<input type='checkbox' onchange='checkChangeImp()' id='impcheckbox'>Important |   <button id='refresh' onclick = 'refreshChange()'>REFRESH</button></div>";
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done | <input type='checkbox' id='impcheckbox'>Important |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
 // console.log('ahashashashjhjsadhjashjd');
@@ -155,4 +147,5 @@ if (impLinks.indexOf(document.URL)!=-1) {
 	};	
 }
 
+var sObj = new scriptInjection(['jquery.js', 'jquery-ui.js', 'funcs.js', 'listeners.js']);
 // widget added

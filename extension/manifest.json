@@ -20,5 +20,5 @@
    "permissions": [ "activeTab", "tabs", "storage" ],
    "short_name": "geekometer",
    "version": "1.2",
-   "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" ]
+   "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" , "listeners.js"]
 }

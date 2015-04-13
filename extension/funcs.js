@@ -159,9 +159,9 @@ function checkChangeImp(){
 }
 
 // TODO: test what the hell it does
-function initiate() {
-	if (this.title!='done') {
-		this.title = 'done';
+function initiate(obj) {
+	if (obj.getAttribute('dat-title') != 'done') {
+		obj.setAttribute('data-title', 'done');
 		effects();
 	};
 }
