@@ -118,7 +118,7 @@ if (typeof localStorage['color'] == 'undefined') {
 }
 // adding widget/tooltip
 
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done | <input type='checkbox' id='impcheckbox'>Important |   <button id='refresh'>REFRESH</button></div>";
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |<input type='checkbox' id='impcheckbox'>Important |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
 // console.log('ahashashashjhjsadhjashjd');
