@@ -17,8 +17,8 @@
    },
    "manifest_version": 2,
    "name": "Geekometer",
-   "permissions": [ "activeTab", "tabs" ],
+   "permissions": [ "activeTab", "tabs", "storage" ],
    "short_name": "geekometer",
-   "version": "1.1.1",
-   "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" ]
+   "version": "1.2",
+   "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" , "listeners.js"]
 }
