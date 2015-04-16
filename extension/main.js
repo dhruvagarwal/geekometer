@@ -117,8 +117,10 @@ if (typeof localStorage['color'] == 'undefined') {
 	localStorage.setItem('color', temp);
 }
 // adding widget/tooltip
-
-ar newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |<input type='checkbox' id='impcheckbox'>Important |   <button id='refresh'>REFRESH</button></div>";
+var colors = ['#2B8CB6','#D78D1A','#2A342B','#E5431E','#8F53E8','#CD1AB0'];
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |<input type='checkbox' id='impcheckbox'>Important ";
+// add colors here
+newDiv += " |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
 // console.log('ahashashashjhjsadhjashjd');

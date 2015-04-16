@@ -4,15 +4,16 @@
     top:3vh; right:50vh;
 	z-index: 10;	
 	color: white;
-	border-radius: 25px;
+	border-radius: 5px;
 	font-size: 14px;
 	cursor: move;
 	width:15.5em;
     font-family:corbel;
 	border-style:solid;
 	border-color:rgb(60,35,12);
-	border-width:0px 5px 5px 0px;
-	background-color:rgb(155,102,11); 	
+	border-width:0px 1.5px 1.5px 0px;
+	background-color:#34495e; 	
+	/*background-color:rgb(155,102,11); 	*/
 }
 
 .draggable {
@@ -38,7 +39,8 @@ body .ui-tooltip {
 }
 
 #refresh {
-	background-color:rgb(96,57,19);
+	background-color:rgb(13, 23, 52);
+	/*background-color:rgb(96,57,19);*/
 	color:white;
 	border-radius:15px;
 	height:23px;
@@ -57,7 +59,8 @@ body .ui-tooltip {
 }
 
 #refresh:hover {
-	background-color:rgb(117,76,36);
+	background-color:#7f8c8d;
+	/*background-color:rgb(117,76,36);*/
 	cursor:pointer;
 }
 
