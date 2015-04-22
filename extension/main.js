@@ -22,6 +22,7 @@ function refreshChange() {
 	a_s = document.getElementsByTagName("a");
 
 	var color = localStorage["color"];
+	console.log('color is '+color+' and '+typeof color);
 	if (typeof color == 'undefined') {
 		color = "#2B8CB6";
 	}
@@ -117,9 +118,16 @@ if (typeof localStorage['color'] == 'undefined') {
 	localStorage.setItem('color', temp);
 }
 // adding widget/tooltip
-var colors = ['#2B8CB6','#D78D1A','#2A342B','#E5431E','#8F53E8','#CD1AB0'];
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |<input type='checkbox' id='impcheckbox'>Important ";
+var colors = ['#2B8CB6','#8055B4','#FF7070'];
+var level = ['Easy','Medium','Hard'];
+var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |<input type='checkbox' id='impcheckbox'>Important |";
 // add colors here
+newDiv += "<select id=\"colorPallete\" >";
+for (i = 0; i < colors.length; i++)
+{
+	newDiv += "<option value=\""+colors[i]+"\">"+ level[i]+"</option>";
+}
+newDiv +="</select>";
 newDiv += " |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 

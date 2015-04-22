@@ -7,8 +7,6 @@ This version will come with many improvements:
 * A new UI for the tooltip
 
 **Colors**
-* #A60002
-* #Ff4547
-* #Ff852b
-* #8a7720
-* #Dcb500
+* #2B8CB6 - easy
+* #8055b4 - medium
+* #FF7070 - difficult

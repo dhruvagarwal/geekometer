@@ -31,5 +31,10 @@ new l([
 			id: 'refresh',
 			listener: 'onclick',
 			callback: function() {refreshChange();}
+		},
+		{
+			id: 'colorPallete',
+			listener: 'onchange',
+			callback: function() {console.log('something');changecolor(this.value);}
 		}
 	]);
