@@ -72,3 +72,7 @@ body .ui-tooltip {
 .important {
 	color: #2B8CB6;
 }
+
+#rangeslider {
+	width: 4em;
+}

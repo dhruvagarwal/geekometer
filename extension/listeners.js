@@ -36,5 +36,10 @@ new l([
 			id: 'colorPallete',
 			listener: 'onchange',
 			callback: function() {console.log('something');changecolor(this.value);}
+		},
+		{
+			id: 'rangeslider',
+			listener: 'onload',
+			callback: function() {console.log('something');}
 		}
 	]);

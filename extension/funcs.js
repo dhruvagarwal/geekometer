@@ -158,7 +158,6 @@ function checkChangeImp(){
 	}
 }
 
-// TODO: test what the hell it does
 function initiate(obj) {
 	if (obj.getAttribute('dat-title') != 'done') {
 		obj.setAttribute('data-title', 'done');
