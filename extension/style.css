@@ -71,7 +71,7 @@ input[type='range'] {
 	border-radius: 10px;
 	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
 	width: 8em;
-	height: 15px;
+	height: 8px;
 }
 
 input[type='range']::-webkit-slider-thumb {

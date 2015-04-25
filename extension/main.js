@@ -101,12 +101,12 @@ var scriptInjection = function(scripts) {
 if (typeof localStorage['done'] == 'undefined') {
 	var temp = [];
 	localStorage.setItem('done', JSON.stringify(temp));
-}
+};
 
 if (typeof localStorage['important'] == 'undefined') {
 	var temp = [];
 	localStorage.setItem('important', JSON.stringify(temp));
-}
+};
 
 // adding widget/tooltip
 var level = ['Easy','Medium','Hard'],step = 33;
@@ -120,9 +120,9 @@ if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	for (var i = 0; i < donebox.length; i++) {
 		if (donebox[i].id === "donecheckbox") {
 			donebox[i].setAttribute("checked","true");
-		}
+		};
 	};
-}
+};
 
 // set handle of rangeslider
 var impArray = JSON.parse(localStorage.getItem('important'));
@@ -133,6 +133,7 @@ for (var i = 0; i < impArray.length; i++) {
 		color = colors[level-1];
 		rangeslider = document.getElementById('rangeslider');
 		rangeslider.setAttribute('value',level*step);
+		rangeslider.style.background = color;
 		// fill the rangeslider with color
 	};
 };

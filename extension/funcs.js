@@ -85,14 +85,14 @@ function setLevel(level,url) {
 		if (typeof index != "undefined")
 			impArray.splice(index,1);
 		localStorage.setItem('important', JSON.stringify(impArray));
+		document.getElementById('rangeslider').style.background = '#ecf0f1';
 		return;
 	};
 
 	var color = colors[level-1];
 	// fill the slider with this color
-	/*
-		code here
-	*/
+	document.getElementById('rangeslider').style.background = color;
+
 	// if the url already exists, then update
 	// assumption : All localStorage variables are already set
 	var impArray = JSON.parse(localStorage.getItem('important')),flag = false;
