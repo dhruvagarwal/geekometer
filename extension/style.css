@@ -4,15 +4,16 @@
     top:3vh; right:50vh;
 	z-index: 10;	
 	color: white;
-	border-radius: 25px;
+	border-radius: 5px;
 	font-size: 14px;
 	cursor: move;
-	width:16em;
-    font-family:corbel;
+	width:18em;
+    	font-family:corbel;
 	border-style:solid;
-	border-color:rgb(60,35,12);
-	border-width:0px 5px 5px 0px;
-	background-color:rgb(155,102,11); 	
+	border-color:#bdc3c7;
+	border-width:0px 1.5px 1.5px 0px;
+	background-color:#34495e; 	
+	/*background-color:rgb(155,102,11); 	*/
 }
 
 .draggable {
@@ -38,7 +39,8 @@ body .ui-tooltip {
 }
 
 #refresh {
-	background-color:rgb(96,57,19);
+	background-color:rgb(13, 23, 52);
+	/*background-color:rgb(96,57,19);*/
 	color:white;
 	border-radius:15px;
 	height:23px;
@@ -57,15 +59,31 @@ body .ui-tooltip {
 }
 
 #refresh:hover {
-	background-color:rgb(117,76,36);
+	background-color:#7f8c8d;
+	/*background-color:rgb(117,76,36);*/
 	cursor:pointer;
 }
 
-.done {
-	text-decoration: line-through;
-	color: #8BA870
+input[type='range'] {
+	-webkit-appearance: none;
+	background: #e6e6e6;
+	display: inline;
+	border-radius: 10px;
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+	width: 8em;
+	height: 8px;
 }
 
-.important {
-	color: #2B8CB6;
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: #ecf0f1;
+	border: 1px solid #bdc3c7;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+input[type='range']:focus {
+	outline: none;
 }
