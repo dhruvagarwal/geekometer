@@ -23,23 +23,26 @@ new l([
 			callback: function() {checkChange();}
 		},
 		{
-			id: 'impcheckbox',
-			listener: 'onchange',
-			callback: function() {checkChangeImp();}
-		},
-		{
 			id: 'refresh',
 			listener: 'onclick',
 			callback: function() {refreshChange();}
 		},
 		{
-			id: 'colorPallete',
+			id: 'rangeslider',
 			listener: 'onchange',
-			callback: function() {console.log('something');changecolor(this.value);}
+			callback: function() {
+				console.log('level changed');
+				var step = 33;
+				setLevel(this.value/step,document.URL);
+			}
 		},
 		{
 			id: 'rangeslider',
-			listener: 'onload',
-			callback: function() {console.log('something');}
+			listener: 'onclick',
+			callback: function() {
+				console.log('level changed on click');
+				var step = 33;
+				setLevel(this.value/step,document.URL);
+			}
 		}
 	]);

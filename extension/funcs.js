@@ -30,48 +30,94 @@ function addtodone(link) {
 	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
-function removefromimp(link) {
-	var importantArray = JSON.parse(localStorage.getItem('important'));
-	var impLinks = [];
-	for (i = 0; i < importantArray.length; i++)
-		impLinks.push(importantArray[i][0]);
-	var index = impLinks.indexOf(link);
-	importantArray.splice(index,1);
-	localStorage.setItem('important', JSON.stringify(importantArray));
-}
+// function removefromimp(link) {
+// 	var importantArray = JSON.parse(localStorage.getItem('important'));
+// 	var impLinks = [];
+// 	for (i = 0; i < importantArray.length; i++)
+// 		impLinks.push(importantArray[i][0]);
+// 	var index = impLinks.indexOf(link);
+// 	importantArray.splice(index,1);
+// 	localStorage.setItem('important', JSON.stringify(importantArray));
+// }
 
-function addtoimp(link) {
-	var color = localStorage['color'];
-	if (typeof color == 'undefined') {
-		color = "#2B8CB6";
-		localStorage.setItem('color',color);
-	}
+// function addtoimp(link) {
+// 	var color = localStorage['color'];
+// 	if (typeof color == 'undefined') {
+// 		color = "#2B8CB6";
+// 		localStorage.setItem('color',color);
+// 	}
 
-	var importantArray=localStorage["important"];
-	if (typeof importantArray == 'undefined') {
-		importantArray = [[link,color]];
-	}
-	else {
-		importantArray = JSON.parse(localStorage.getItem('important'));
-		var impLinks = [];
-		for (i = 0; i < importantArray.length; i++)
-			impLinks.push(importantArray[i][0]);
-		if (impLinks.indexOf(link) == -1){
-			importantArray.push([link,color]);
+// 	var importantArray=localStorage["important"];
+// 	if (typeof importantArray == 'undefined') {
+// 		importantArray = [[link,color]];
+// 	}
+// 	else {
+// 		importantArray = JSON.parse(localStorage.getItem('important'));
+// 		var impLinks = [];
+// 		for (i = 0; i < importantArray.length; i++)
+// 			impLinks.push(importantArray[i][0]);
+// 		if (impLinks.indexOf(link) == -1){
+// 			importantArray.push([link,color]);
+// 		}
+// 	}
+// 	localStorage.setItem('important', JSON.stringify(importantArray));
+// }
+
+// function changecolor(color) {
+// 	localStorage.setItem('color',color);
+// }
+
+var colors = ['#2B8CB6','#8055B4','#FF7070'];
+
+// function to mark level of a link
+function setLevel(level,url) {
+	// change fill color of the slider
+	// check if the question exists in the important list
+	// update/insert with the new level
+	if (level === 0) {
+		// remove it from important and exit
+		var impArray = JSON.parse(localStorage.getItem('important'));
+		for (var i = 0; i < impArray.length; i++) {
+			if (impArray[i][0]===url) {
+				var index = i;
+			};
+		};
+		if (typeof index != "undefined")
+			impArray.splice(index,1);
+		localStorage.setItem('important', JSON.stringify(impArray));
+		return;
+	};
+
+	var color = colors[level-1];
+	// fill the slider with this color
+	/*
+		code here
+	*/
+	// if the url already exists, then update
+	// assumption : All localStorage variables are already set
+	var impArray = JSON.parse(localStorage.getItem('important')),flag = false;
+	for (i = 0; i < impArray.length; i++)
+	{
+		if (impArray[i][0]===url)
+		{
+			// update the level
+			impArray[i][1] = level;
+			flag = true;
 		}
 	}
-	localStorage.setItem('important', JSON.stringify(importantArray));
-}
 
-function changecolor(color) {
-	localStorage.setItem('color',color);
+	// if it doesn't, create a new
+	if (!flag)
+	{
+		impArray.push([url,level]);
+	}
+	localStorage.setItem("important",JSON.stringify(impArray));
 }
 
 // function to nullify all addons on links
 function nullify() {
 	var a_s = document.getElementsByTagName("a");
 	for (var i = 0; i < a_s.length; i++) {
-		a_s[i].setAttribute("class","");
 		a_s[i].setAttribute("style","");
 		
 	};
@@ -81,11 +127,6 @@ function refreshChange() {
 	nullify();
 	a_s = document.getElementsByTagName("a");
 
-	var color = localStorage["color"];
-	if (typeof color == 'undefined') {
-		color = "#2B8CB6";
-	}
-	
 	// for done
 	var doneArray = localStorage["done"];
 	if (typeof doneArray == 'undefined') {
@@ -105,21 +146,23 @@ function refreshChange() {
 		var newImp = [];
 		for (i = 0; i < importantArray.length; i++) {
 			if (typeof importantArray[i] == 'string') {
-				newImp.push([importantArray[i],color]);
+				newImp.push([importantArray[i],1]);
 			}
 			else
 				newImp.push(importantArray[i]);
 		}
 		localStorage.setItem("important",JSON.stringify(newImp));
-		importantArray = newImp;
+		importantArray = newImp;// copy the new array to previous
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
+		// TODO: make this optional
+		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
 
 		// for done
 		for (var k = 0; k < doneArray.length;k++) {
 			if (doneArray[k] == a_s[j].href || doneArray[k]==mappings[a_s[j].href]) {
-				a_s[j].setAttribute("class","done "+a_s[j].className);
+				// a_s[j].setAttribute("class","done "+a_s[j].className);
 				a_s[j].style.color = "#8BA870";
 				a_s[j].style.textDecoration = "line-through";
 				break;
@@ -129,8 +172,8 @@ function refreshChange() {
 		// for important
 		for (var k = 0; k < importantArray.length;k++) {
 			if (importantArray[k][0] == a_s[j].href || importantArray[k][0]==mappings[a_s[j].href]) {
-				a_s[j].setAttribute("class","important "+a_s[j].className);
-				a_s[j].style.color = importantArray[k][1];
+				// a_s[j].setAttribute("class","important "+a_s[j].className);
+				a_s[j].style.color = colors[importantArray[k][1]-1];
 				break;
 			};
 		};
