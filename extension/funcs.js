@@ -30,43 +30,6 @@ function addtodone(link) {
 	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
-// function removefromimp(link) {
-// 	var importantArray = JSON.parse(localStorage.getItem('important'));
-// 	var impLinks = [];
-// 	for (i = 0; i < importantArray.length; i++)
-// 		impLinks.push(importantArray[i][0]);
-// 	var index = impLinks.indexOf(link);
-// 	importantArray.splice(index,1);
-// 	localStorage.setItem('important', JSON.stringify(importantArray));
-// }
-
-// function addtoimp(link) {
-// 	var color = localStorage['color'];
-// 	if (typeof color == 'undefined') {
-// 		color = "#2B8CB6";
-// 		localStorage.setItem('color',color);
-// 	}
-
-// 	var importantArray=localStorage["important"];
-// 	if (typeof importantArray == 'undefined') {
-// 		importantArray = [[link,color]];
-// 	}
-// 	else {
-// 		importantArray = JSON.parse(localStorage.getItem('important'));
-// 		var impLinks = [];
-// 		for (i = 0; i < importantArray.length; i++)
-// 			impLinks.push(importantArray[i][0]);
-// 		if (impLinks.indexOf(link) == -1){
-// 			importantArray.push([link,color]);
-// 		}
-// 	}
-// 	localStorage.setItem('important', JSON.stringify(importantArray));
-// }
-
-// function changecolor(color) {
-// 	localStorage.setItem('color',color);
-// }
-
 var colors = ['#2B8CB6','#8055B4','#FF7070'];
 
 // function to mark level of a link
@@ -184,20 +147,12 @@ function refreshChange() {
 function checkChange(){
 	var eg_check = document.getElementById('donecheckbox');
 	if (eg_check.checked) {
-		addtodone(document.URL);console.log('checked');
+		addtodone(document.URL);
+		// console.log('checked');
 	}
 	else {
-		removefromdone(document.URL);console.log('unchecked');
-	}
-}
-
-function checkChangeImp(){
-	var eg_check = document.getElementById('impcheckbox');
-	if (eg_check.checked) {
-		addtoimp(document.URL);console.log('checked');
-	}
-	else {
-		removefromimp(document.URL);console.log('unchecked');
+		removefromdone(document.URL);
+		// console.log('unchecked');
 	}
 }
 
