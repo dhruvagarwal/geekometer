@@ -111,7 +111,7 @@ if (typeof localStorage['important'] == 'undefined') {
 // adding widget/tooltip
 var level = ['Easy','Medium','Hard'],step = 33;
 var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |";
-newDiv += "<input type=range step="+step+" value=0 id='rangeslider' />"
+newDiv += "<input type=range step="+step+" value=0 id='rangeslider' title='Slide it Left to Right to mark Easy,Medium or Hard Level'/>"
 newDiv += " |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
