@@ -1,12 +1,7 @@
-Geekometer version 1.2
------------------------
-This version will come with many improvements:
+Geekometer
+------------
+Chrome Extension for very famous interview preparation site [GeeksForGeeks](http://www.geeksforgeeks.org) .
 
-* Mark important with more colors
-* A simultaneous backup system
-* A new UI for the tooltip
+Version 1.2 is ready to release
 
-**Colors**
-* #2B8CB6 - easy
-* #8055b4 - medium
-* #FF7070 - difficult
+Read more at the [wiki](https://github.com/dhruvagarwal/geekometer/wiki)
