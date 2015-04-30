@@ -20,12 +20,18 @@ new l([
 		{
 			id: 'donecheckbox',
 			listener: 'onchange',
-			callback: function() {checkChange();}
+			callback: function() {
+				checkChange();
+				backup();
+			}
 		},
 		{
 			id: 'refresh',
 			listener: 'onclick',
-			callback: function() {refreshChange();}
+			callback: function() {
+				refreshChange();
+				backup();
+			}
 		},
 		{
 			id: 'rangeslider',

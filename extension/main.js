@@ -115,6 +115,17 @@ newDiv += "<input type=range step="+step+" value=0 id='rangeslider' title='Slide
 newDiv += " |   <button id='refresh'>REFRESH</button></div>";
 document.body.innerHTML += newDiv;
 
+function backup() {
+	done = localStorage['done'];
+	important = localStorage['important'];
+	console.log(done.length,important.length,chrome.storage.local);
+	chrome.storage.local.set({'done':done,'important':important},function(){
+		console.log('values pushed');
+	});
+}
+
+backup();
+
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
 	donebox = document.getElementsByTagName('input');
 	for (var i = 0; i < donebox.length; i++) {

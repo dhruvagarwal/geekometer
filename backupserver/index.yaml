@@ -1,0 +1,6 @@
+indexes:
+- kind: Backups
+  ancestor: yes
+  properties:
+  - name: id
+    direction: asc
