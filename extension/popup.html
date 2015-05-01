@@ -4,7 +4,6 @@
 			width: 20em;
 		}
 	</style>
-	<script type="text/javascript" src="popup.js"></script>
 </head>
 <body>
 	<h3>Thanks for Downloading this extension.</h2>
@@ -12,9 +11,24 @@
 	It will work automatically on <a href="http://www.geeksforgeeks.org/" target="_blank">GeekforGeeks</a><br />
 	Confused on how to use it ? Here's a short <a href="https://github.com/dhruvagarwal/geekometer/wiki" target="_blank">info</a> about the widget.
 	</i></p>
-	<div id="button"
+	<div id="backup"
 		  style="padding:8px;
+		  		 cursor:pointer;
 		  		 background-color:#2B8C46;
-		  		 display: inline-block;">Authorize Google Plus</div>
-
-</body></html>
+		  		 color:white;
+		  		 display: inline-block;
+		  		 font-size:14px;">Backup</div>
+	&nbsp;&nbsp;<div id="fetch"
+		  style="padding:8px;
+		  		 cursor:pointer;
+		  		 background-color:#2B8C46;
+		  		 color:white;
+		  		 display: inline-block;
+		  		 font-size:14px;">Fetch Backup</div>
+	<br>
+	<br>
+	<div id="message" style="padding:5px;background-color:rgba(0,0,0,0.7);color:white;diplay:inline-block;font-size:14px;">no message</div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

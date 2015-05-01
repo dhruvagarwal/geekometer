@@ -77,6 +77,17 @@ function refreshChange() {
 
 }
 
+chrome.storage.local.get(['done','important','fetch'], function(obj) {
+	if (obj.fetch)
+	{
+		chrome.storage.local.set({'fetch':true}, function() {
+			console.log('fetch flag unset');
+		});
+		localStorage.setItem("done", obj.done);
+		localStorage.setItem("important", obj.important);
+	}
+});
+
 refreshChange();
 
 var scriptInjection = function(scripts) {
