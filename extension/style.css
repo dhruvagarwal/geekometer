@@ -1,5 +1,5 @@
 #g4g {
-	padding: 5px 10px;
+	padding: 10px;
 	position: fixed;
     top:3vh; right:50vh;
 	z-index: 10;	
@@ -7,8 +7,8 @@
 	border-radius: 5px;
 	font-size: 14px;
 	cursor: move;
-	width:18em;
-    	font-family:corbel;
+	width:19em;
+    font-family:corbel;
 	border-style:solid;
 	border-color:#bdc3c7;
 	border-width:0px 1.5px 1.5px 0px;
@@ -16,15 +16,20 @@
 	/*background-color:rgb(155,102,11); 	*/
 }
 
+#g4g td {
+    padding: 4px;
+}
+
+#rangeslider {
+    padding: 0px;
+}
+
 .draggable {
 	position:fixed;
-	padding: 0.5em;
-	padding-right:0;
 	float: left;
 	width: 10em;
 	margin: 0 10px 10px 0;
 }
-
 
 .ui-tooltip {
 	padding: 8px;
@@ -33,7 +38,9 @@
 	max-width: 300px;
 	-webkit-box-shadow: 0 0 5px #aaa;
 	box-shadow: 0 0 5px #aaa;
+    background-color: white;
 }
+
 body .ui-tooltip {
 	border-width: 2px;
 }
@@ -43,13 +50,12 @@ body .ui-tooltip {
 	/*background-color:rgb(96,57,19);*/
 	color:white;
 	border-radius:15px;
-	height:23px;
+	height:20px;
 	font-size:12px;
 	font-family:corbel;
     width:73px;
+    padding-top: 2px;
     border-width:0px;
-    left:3px;
-    position:relative;
     border-style:solid;
     border-color:black;
 }
@@ -71,7 +77,7 @@ input[type='range'] {
 	border-radius: 10px;
 	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
 	width: 8em;
-	height: 8px;
+	height: 6px;
 }
 
 input[type='range']::-webkit-slider-thumb {

@@ -109,10 +109,15 @@ if (typeof localStorage['important'] == 'undefined') {
 };
 
 // adding widget/tooltip
-var level = ['Easy','Medium','Hard'],step = 33;
-var newDiv = "<div class='g4g draggable ui-widget-content' id='g4g' title='Drag and Drop horizontally on screen'><input type='checkbox' id='donecheckbox'>Done |";
-newDiv += "<input type=range step="+step+" value=0 id='rangeslider' title='Slide it Left to Right to mark Easy,Medium or Hard Level'/>"
-newDiv += " |   <button id='refresh'>REFRESH</button></div>";
+var level = ['Easy','Medium','Hard'], step = 33;
+
+// Append the widget on the page
+var newDiv = "<table id='g4g' class='draggable' title='Drag and Drop horizontally on screen'>";
+newDiv += "<tr><td><input type='checkbox' id='donecheckbox' /> ";
+newDiv += "<td>Done</td><td>|</td></td>";
+newDiv += "<td><input type='range' step=" + step + " value='0' id='rangeslider' title='Slide it Left to Right to mark Easy, Medium or Hard Level'/></td>";
+newDiv += "<td>|</td><td><button id='refresh'>REFRESH</button></td></tr></table>";
+
 document.body.innerHTML += newDiv;
 
 if (JSON.parse(localStorage.getItem('done')).indexOf(document.URL)!=-1) {
