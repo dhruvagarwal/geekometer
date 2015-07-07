@@ -9,6 +9,9 @@ var mappings = {
     "http://www.geeksforgeeks.org/archives/8405": "http://www.geeksforgeeks.org/next-greater-element/"
 };
 
+var colors = ['#2B8CB6','#8055B4','#FF7070'];
+var G4G_COLOR = '#006600';
+
 function removefromdone(link) {
 	var rem = JSON.parse(localStorage.getItem('done'));
 	var index = rem.indexOf(link);
@@ -30,7 +33,6 @@ function addtodone(link) {
 	localStorage.setItem('done', JSON.stringify(doneArray));
 }
 
-var colors = ['#2B8CB6','#8055B4','#FF7070'];
 
 // function to mark level of a link
 function setLevel(level,url) {
@@ -79,16 +81,16 @@ function setLevel(level,url) {
 
 // function to nullify all addons on links
 function nullify() {
-	var a_s = document.getElementsByTagName("a");
+	var a_s = document.getElementsByClassName('wrapper')[0].getElementsByTagName("a");
 	for (var i = 0; i < a_s.length; i++) {
 		a_s[i].setAttribute("style","");
-		
+		a_s[i].style.color = G4G_COLOR;
 	};
 }
 
 function refreshChange() {
 	nullify();
-	a_s = document.getElementsByTagName("a");
+	a_s = document.getElementsByClassName('wrapper')[0].getElementsByTagName("a");
 
 	// for done
 	var doneArray = localStorage["done"];

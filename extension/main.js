@@ -10,18 +10,20 @@ var mappings = {
 };
 
 var colors = ['#2B8CB6','#8055B4','#FF7070'];
+var G4G_COLOR = '#006600';
 
 // function to nullify all addons on links
 function nullify() {
-	var a_s = document.getElementsByTagName("a");
+	var a_s = document.getElementsByClassName('wrapper')[0].getElementsByTagName("a");
 	for (var i = 0; i < a_s.length; i++) {
 		a_s[i].setAttribute("style","");
+		a_s[i].style.color = G4G_COLOR;
 	};
 }
 
 function refreshChange() {
 	nullify();
-	a_s = document.getElementsByTagName("a");
+	a_s = document.getElementsByClassName('wrapper')[0].getElementsByTagName("a");
 
 	// for done
 	var doneArray = localStorage["done"];
