@@ -8,7 +8,7 @@
       "all_frames": true,
       "css": [ "style.css" ],
       "js": [ "main.js" ],
-      "matches": [ "*://www.geeksforgeeks.org/*", "*://geeksforgeeks.org/*" ]
+      "matches": [ "*://www.geeksforgeeks.org/*" ]
    } ],
    "description": "Ease your experience by crossing done questions",
    "icons": {
@@ -19,6 +19,6 @@
    "name": "Geekometer",
    "permissions": [ "activeTab", "tabs", "storage", "identity" ],
    "short_name": "geekometer",
-   "version": "1.2.0.6",
+   "version": "1.2.0.5",
    "web_accessible_resources": [ "funcs.js", "jquery.js", "jquery-ui.js" , "listeners.js"]
 }
