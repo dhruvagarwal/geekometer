@@ -121,8 +121,10 @@ function refreshChange() {
 	}
 
 	for (var j = 0; j < a_s.length; j++) {
-		// TODO: make this optional
-		a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
+		// TODO: add provision for toggling the below flag
+        if (localStorage['linkActionToggle']) {
+		    a_s[j].setAttribute("target","_blank"); // making all hyperlinks open in new window
+        };
 
 		// for done
 		for (var k = 0; k < doneArray.length;k++) {
