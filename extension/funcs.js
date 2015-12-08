@@ -1,11 +1,11 @@
 // hack to save redirected links
 var mappings = {
-    "http://www.geeksforgeeks.org/archives/11042": "http://www.geeksforgeeks.org/applications-of-queue-data-structure/", 
-    "http://www.geeksforgeeks.org/archives/18754": "http://www.geeksforgeeks.org/implement-two-stacks-in-an-array/", 
-    "http://www.geeksforgeeks.org/archives/6547": "http://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/", 
-    "http://www.geeksforgeeks.org/archives/23449": "http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/", 
-    "http://www.geeksforgeeks.org/archives/6921": "http://www.geeksforgeeks.org/reverse-a-stack-using-recursion/", 
-    "http://www.geeksforgeeks.org/archives/5009": "http://www.geeksforgeeks.org/queue-using-stacks/", 
+    "http://www.geeksforgeeks.org/archives/11042": "http://www.geeksforgeeks.org/applications-of-queue-data-structure/",
+    "http://www.geeksforgeeks.org/archives/18754": "http://www.geeksforgeeks.org/implement-two-stacks-in-an-array/",
+    "http://www.geeksforgeeks.org/archives/6547": "http://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/",
+    "http://www.geeksforgeeks.org/archives/23449": "http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/",
+    "http://www.geeksforgeeks.org/archives/6921": "http://www.geeksforgeeks.org/reverse-a-stack-using-recursion/",
+    "http://www.geeksforgeeks.org/archives/5009": "http://www.geeksforgeeks.org/queue-using-stacks/",
     "http://www.geeksforgeeks.org/archives/8405": "http://www.geeksforgeeks.org/next-greater-element/"
 };
 
@@ -168,15 +168,15 @@ function initiate(obj) {
 }
 
 function effects () {
-	$( "#g4g" ).draggable({ 
+	$( "#g4g" ).draggable({
 		containment: "#wrapper", scroll: true, axis: "x",
-		drag: function( event, ui ) {  
+		drag: function( event, ui ) {
 			//$(document).tooltip({ disabled: true });
 		},
-		stop: function( event, ui ) {  
-			//$(document).tooltip({ disabled: false }); 
+		stop: function( event, ui ) {
+			//$(document).tooltip({ disabled: false });
 		}
-		
+
 	});
 
 	var old=0;
@@ -185,7 +185,7 @@ function effects () {
 		old=scvalue;
 		scvalue=($(window).scrollTop()); /*returns the vertical scrollbar position for the selected element,When the scrollbar is on the top, the position is 0.*/
 		var mydiv=document.getElementById("g4g");
-		
+
 		if(scvalue>=320)  //you can change 200 to any other value by measuring scroll value displayed in top left div
 		{
 			//hide div
@@ -194,7 +194,7 @@ function effects () {
 			else
 			{$("#g4g").fadeIn();}
 		}
-		
+
 		else
 		{
 			//show div, pushing div down
@@ -202,8 +202,8 @@ function effects () {
 		}
 
 	});
-	
-	
+
+
 	$(window).resize(function()	{
 		var g4g=document.getElementById("g4g");
 		g4g.style.left="0vh";
@@ -213,7 +213,7 @@ function effects () {
 		var r=$("#g4g").css("right");
 		alert("margin-top:" +mtop + " , margin-right:" + mright + " ,top:" + t + " , right:" + r);*/
 	});
-	
+
 	$(function() {
 		$(document).tooltip();
     });

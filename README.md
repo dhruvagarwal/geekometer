@@ -12,7 +12,7 @@ Geekometer
 
 	Its fairly simple!
 
-* First look at the original geeksforgeeks interface - No organised questions! 
+* First look at the original geeksforgeeks interface - No organised questions!
 Now go to a question link. Done with the question? Mark is as "Done"!. Want to rank it or prioritize for solving later? Set the "Priority level" - use and color from available three color scheme!
 
 	![Done](http://i.imgur.com/Kdh6uEQ.gif)
