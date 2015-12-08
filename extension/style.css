@@ -94,6 +94,6 @@ input[type='range']:focus {
 	outline: none;
 }
 
-input[type='checkbox'] {
+#donecheckbox {
     display: inline-flex;
 }
