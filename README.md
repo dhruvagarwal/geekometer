@@ -24,3 +24,6 @@ Now go to a question link. Done with the question? Mark is as "Done"!. Want to r
 	![After](http://i.imgur.com/D1P2ZdY.png)
 
 
+<a href = "https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png" >
+<img alt= "Get it on Chrome App Store" src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png"
+</a>
