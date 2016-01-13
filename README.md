@@ -8,6 +8,17 @@ Geekometer
 
  ----------------------------------------------------------------------------------------------------------------------------------
 
+* **How to install?**
+```
+1. Open your google chrome
+2. go to setting and select extensions
+3. select get more extensions
+4. search for geekometer
+5. Install it
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
 * **How to use Geekometer?**
 
 	Its fairly simple!
