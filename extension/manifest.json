@@ -8,7 +8,7 @@
       "all_frames": true,
       "css": [ "style.css" ],
       "js": [ "main.js" ],
-      "matches": [ "*://www.geeksforgeeks.org/*" ]
+      "matches": [ "*://www.geeksforgeeks.org/*","*://geeksquiz.com/*" ]
    } ],
    "description": "Ease your experience by crossing done questions",
    "icons": {
